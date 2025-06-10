@@ -1,12 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     public List<GameObject> targets;
-    float spawnRate;
+    float spawnRate = 1;
     public List<string> easyWords;
     public List<string> hardWords;
+
+    public TMP_InputField currentInput;
+    public int score;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

@@ -149,9 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4139288d4697312418edacea76997a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 0
-  maxSpeed: 0
-  minTorque: 0
-  maxTorque: 0
-  xRange: 0
-  ySpawnPos: 0
+  minSpeed: 10
+  maxSpeed: 10
+  minTorque: 10
+  maxTorque: 10
+  xRange: 10
+  ySpawnPos: 10
+  pointValue: -2

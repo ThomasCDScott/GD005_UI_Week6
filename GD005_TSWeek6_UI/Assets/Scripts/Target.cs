@@ -4,6 +4,11 @@ public class Target : MonoBehaviour
 {
     Rigidbody targetRb;
     [SerializeField] float minSpeed, maxSpeed, minTorque, maxTorque, xRange, ySpawnPos;
+
+    private GameManager gameManager;
+    public int pointValue;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,6 +20,8 @@ public class Target : MonoBehaviour
         targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
         //Random Spawn position
         transform.position = RandomSpawnPosition();
+
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     float RandomNumberGenerator(float minRange, float maxRange)
@@ -40,9 +47,22 @@ public class Target : MonoBehaviour
     {
         // It is true for one frame whenever the player clicks the collider
         Destroy(gameObject);
+        gameManager.UpdateScore(pointValue);
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+        if (!gameObject.CompareTag("Bad"))
+        {
+            gameManager.GameOver();
+        }
+
+        if(gameManager.isGameActive)
+        {
+
+        }
+    }
 
 
 }

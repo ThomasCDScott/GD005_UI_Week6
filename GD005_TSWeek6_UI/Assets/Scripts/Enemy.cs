@@ -1,28 +1,41 @@
-using UnityEngine;
+using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     GameManager _gm;
     public string myWord;
     public TMP_Text mytext;
+   
+    
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        _gm = GameObject.FindAnyObjectByType<GameManager>();
-        myWord = _gm.easyWords[Random.Range(0, _gm.easyWords.Count)];
-        mytext.text = myWord;
+        
+        
+            _gm = GameObject.FindAnyObjectByType<GameManager>();
+            myWord = _gm.words[Random.Range(0, _gm.words.Length)];
+            mytext.text = myWord;
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (_gm.currentInput.text == myWord)
+        transform.Translate(Vector3.right * 3 * Time.deltaTime);
+
+        if (transform.position.x >= 8.5f)
+        {
+            Destroy(gameObject);
+            _gm.lives--;
+        }
+
+        if (_gm.input.text == myWord)
         {
             _gm.score++;
-            _gm.currentInput.text = string.Empty;
+            _gm.input.text = string.Empty;
             Destroy(gameObject);
         }
     }
+
 }

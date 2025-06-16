@@ -58,10 +58,6 @@ public class Target : MonoBehaviour
             gameManager.GameOver();
         }
 
-        if(gameManager.isGameActive)
-        {
-
-        }
     }
 
 
